@@ -15,6 +15,11 @@ export class ProductDetailComponent implements OnInit {
   /*评论信息*/
   comments: Comment[];
 
+  /*新评论信息*/
+  newRating = 5; /*默认5星*/
+  newComment = '';
+  isCommentHidden = true;
+
   constructor(
     private routeInfo: ActivatedRoute,
     private productService: ProductService
@@ -25,6 +30,20 @@ export class ProductDetailComponent implements OnInit {
     this.product = this.productService.getProduct(+productId);
     this.comments = this.productService.getCommentsForProductId(+productId);
     /*this.productTitle = this.routeInfo.snapshot.params['prodTitle'];*/
+  }
+  addComment(): void {
+    const comment = new Comment(0, this.product.id, new Date().toISOString(), 'zilong', this.newRating, this.newComment);
+    /*this.comments.push(comment);*/
+    this.comments.unshift(comment);
+
+    /*计算平均评分*/
+    let sum = this.comments.reduce((sum, comment) => sum + comment.rating, 0);
+    this.product.rating = sum / this.comments.length;
+
+    /*重置表单*/
+    this.newRating = 5;
+    this.newComment = '';
+    this.isCommentHidden = true;
   }
 
 }

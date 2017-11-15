@@ -9,11 +9,25 @@
   <div>
     <p class="pull-right">{{comments.length}}</p>
     <p>
-      <app-stars [rating]="product.rating"></app-stars>
+      <app-stars [rating]="product.rating | number:'1.0-1'"></app-stars>
     </p>
   </div>
 </div>
 <div class="well">
+  <div>
+    <button class="btn btn-success" (click)="isCommentHidden = !isCommentHidden">发表评论</button>
+  </div>
+  <div [hidden]="isCommentHidden">
+    <div>
+      <app-stars [(rating)]="newRating" [readonly]="false"></app-stars>
+    </div>
+    <div>
+      <textarea cols="30" rows="3" [(ngModel)]="newComment"></textarea>
+    </div>
+    <div>
+      <button type="button" (click)="addComment()">提交评论</button>
+    </div>
+  </div>
   <div class="row" *ngFor="let comment of comments">
     <hr>
     <div class="col-md-12">
