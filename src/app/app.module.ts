@@ -14,6 +14,7 @@ import {HomeComponent} from './home/home.component';
 import {ProductService} from './shared/product.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {FilterPipe} from './pipe/filter.pipe';
+import {HttpModule} from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import {FilterPipe} from './pipe/filter.pipe';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpModule
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]

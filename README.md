@@ -26,3 +26,5 @@ Before running the tests make sure you are serving the app via `ng serve`.
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+在proxy.conf.json文件中配置，当请求地址以 /api 开头时，都转发http://localhost:8000域名下，并在package.json文件对 start命令 做相应配置

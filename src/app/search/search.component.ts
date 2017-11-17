@@ -15,7 +15,7 @@ export class SearchComponent implements OnInit {
   constructor(private productService: ProductService) {
     const formBuilder = new FormBuilder();
     this.formModel = formBuilder.group({
-      title: ['', Validators.minLength(3)],
+      title: ['', Validators.minLength(1)],
       price: [null, this.positiveNumberValidator],
       category: ['-1']
     });
@@ -33,7 +33,7 @@ export class SearchComponent implements OnInit {
       return null;
     }
     const price = parseInt(control.value);
-    console.log(price);
+    /*console.log(price);*/
 
     if (price > 0) {
       return null;
@@ -43,9 +43,10 @@ export class SearchComponent implements OnInit {
   }
 
   onSearch() {
+    /*valid属性，为true时表单验证通过*/
     if (this.formModel.valid) {
-      alert('表单验证通过');
-      console.log(this.formModel.value);
+      /*console.log(this.formModel.value);*/
+      this.productService.searchEvent.emit(this.formModel.value);
     }
   }
 

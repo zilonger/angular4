@@ -26,6 +26,7 @@ export class StarsComponent implements OnInit, OnChanges {
   }
   /*输入属性改变时，该钩子被调用*/
   ngOnChanges(changes: SimpleChanges): void {
+    /*重新设置星级*/
     this.stars = [];
     for (let i = 1; i <= 5; i++) {
       this.stars.push(i > this.rating);
