@@ -15,6 +15,7 @@ import {ProductService} from './shared/product.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {FilterPipe} from './pipe/filter.pipe';
 import {HttpModule} from '@angular/http';
+import {WebSocketService} from "./shared/web-socket.service";
 
 @NgModule({
   declarations: [
@@ -36,7 +37,7 @@ import {HttpModule} from '@angular/http';
     ReactiveFormsModule,
     HttpModule
   ],
-  providers: [ProductService],
+  providers: [ProductService, WebSocketService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

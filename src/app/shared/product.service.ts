@@ -7,24 +7,6 @@ import 'rxjs/add/operator/map';
 export class ProductService {
   /*searchEvent作为中间人*/
   searchEvent: EventEmitter<ProductSearchParams> = new EventEmitter();
-
-  /*ws: WebSocket;
-  /!*创建一个可观察的websocket流*!/
-  createObservableSocket(url: string): Observable<any> {
-    this.ws = new WebSocket(url);
-    return new Observable(
-      observer => {
-        this.ws.onmessage = (event) => observer.next(event.data);
-        this.ws.onerror = (event) => observer.error(event);
-        this.ws.onclose = (event) => observer.complete();
-      }
-    );
-  }
-  /!*发送消息*!/
-  sendMessage(message: string) {
-    this.ws.send(message);
-  }*/
-
   constructor(private http: Http) { }
 
   /*获取分类信息*/
